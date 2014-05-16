@@ -15,7 +15,7 @@ rightscale_marker :begin
   touch /etc/rackspace/.noupdates
 
   #wait until the rackspace post install boot sequence has completed
-  STATUS=`curl https://ord.api.rackconnect.rackspace.com/v1/automation_status?format=text`
+  STATUS=system('curl https://ord.api.rackconnect.rackspace.com/v1/automation_status?format=text')
   while  [ "$STATUS" != "DEPLOYED" ]; do
     echo " waiting for rackspace post install to complete"
     echo "current status: $STATUS"
