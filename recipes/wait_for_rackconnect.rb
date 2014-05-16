@@ -19,7 +19,7 @@ rightscale_marker :begin
   while  [ "$STATUS" != "DEPLOYED" ]; do
     echo " waiting for rackspace post install to complete"
     echo "current status: $STATUS"
-    STATUS=`curl https://ord.api.rackconnect.rackspace.com/v1/automation_status?format=text`
+    STATUS=system('curl https://ord.api.rackconnect.rackspace.com/v1/automation_status?format=text')
     sleep 5
   done
 `
