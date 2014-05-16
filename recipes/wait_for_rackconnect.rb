@@ -9,7 +9,7 @@
 
 rightscale_marker :begin
 
-system('
+`
   touch /root/.noupdate
   touch /etc/rackspace/.bootstrapped
   touch /etc/rackspace/.noupdates
@@ -22,6 +22,6 @@ system('
     STATUS=`curl https://ord.api.rackconnect.rackspace.com/v1/automation_status?format=text`
     sleep 5
   done
-')
+`
 
 rightscale_marker :end
