@@ -27,7 +27,7 @@ log "wait_for_rackconnect logs are found in /var/log/wait_for_rackconnect.log"
     ps aux | grep yum | grep -v "grep yum"
     
     rackspace_region="#{node[:rackspace_cloud][:region]}"
-    rackspace_region=`sed -r 's/(\w+).*/\1/'<<<$rackspace_region | tr '[:upper:]' '[:lower:]'`
+    rackspace_region=`sed -r 's/(\\w+).*/\\1/'<<<$rackspace_region | tr '[:upper:]' '[:lower:]'`
     echo "*** rackspace_region=$rackspace_region"
 
     if [ -z "$rackspace_region" ] ; then 
