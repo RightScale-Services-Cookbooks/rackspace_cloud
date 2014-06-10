@@ -23,7 +23,7 @@ log "wait_for_rackconnect logs are found in /var/log/wait_for_rackconnect.log"
     echo "*** /root/rackconnectuserconfig.log contains:"
     cat /root/rackconnectuserconfig.log
 
-    echo "*** yum processes start:"
+    echo -e "\n\n*** yum processes start:\n"
     ps aux | grep yum | grep -v "grep yum"
     
     rackspace_region="#{node[:rackspace_cloud][:region]}"
