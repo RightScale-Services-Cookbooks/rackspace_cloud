@@ -43,6 +43,7 @@ log "wait_for_rackconnect logs are found in /var/log/wait_for_rackconnect.log"
     while  [ "$STATUS" != "DEPLOYED" ]; do
       echo '*** waiting for rackspace post install to complete'
       echo "*** current status: $STATUS"
+      sleep 10
       STATUS=`curl https://ord.api.rackconnect.rackspace.com/v1/automation_status?format=text`
     done
     echo "*** yum processes end:"
