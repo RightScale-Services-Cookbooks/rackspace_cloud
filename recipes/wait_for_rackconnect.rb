@@ -16,7 +16,7 @@ log "wait_for_rackconnect logs are found in /var/log/wait_for_rackconnect.log"
 %x[
   log_file="/var/log/wait_for_rackconnect.log"
   if [ -d "/etc/rackspace" ]; then
-    #touch /root/.noupdate
+    touch /root/.noupdate
     touch /etc/rackspace/.bootstrapped
     touch /etc/rackspace/.noupdates
     
