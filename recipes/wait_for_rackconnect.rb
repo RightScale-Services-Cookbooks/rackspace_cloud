@@ -19,14 +19,19 @@ system('
     touch /etc/rackspace/.bootstrapped
     touch /etc/rackspace/.noupdates
 
+    echo "*** yum processes start:"
+    ps aux | grep yum | grep -v "grep yum"
     #wait until the rackspace post install boot sequence has completed
+    date
     STATUS=`curl https://ord.api.rackconnect.rackspace.com/v1/automation_status?format=text`
+    echo "*** current status: $STATUS"
     while  [ "$STATUS" != "DEPLOYED" ]; do
-      echo " waiting for rackspace post install to complete"
-      echo "current status: $STATUS"
+      echo "*** waiting for rackspace post install to complete"
+      echo "*** current status: $STATUS"
       STATUS=`curl https://ord.api.rackconnect.rackspace.com/v1/automation_status?format=text`
-      sleep 5
     done
+    echo "*** yum processes end:"
+    ps aux | grep yum | grep -v "grep yum"
   fi > $log_file 2>&1
 ')
 
