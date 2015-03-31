@@ -8,7 +8,9 @@
 # All rights reserved - Do Not Redistribute
 #
 
-rightscale_marker :begin
+marker "recipe_start_rightscale" do
+  template "rightscale_audit_entry.erb"
+end
 
 log "wait_for_rackconnect logs are found in /var/log/wait_for_rackconnect.log"
 
@@ -50,5 +52,3 @@ log "wait_for_rackconnect logs are found in /var/log/wait_for_rackconnect.log"
     ps aux | grep yum | grep -v "grep yum"
   fi > $log_file 2>&1
 ]
-
-rightscale_marker :end
