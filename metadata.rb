@@ -9,6 +9,7 @@ version          '0.1.2'
 depends "fog"
 depends "marker"
 
+recipe "rackspace_cloud::default"
 recipe "rackspace_cloud::wait_for_rackconnect",
   "Wait for the RackConnect automation to avoid a yum install conflict"
   
