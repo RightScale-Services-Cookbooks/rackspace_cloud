@@ -16,6 +16,7 @@ action :connect do
 end
 
 action :disconnect do
+  require 'fog'
   auth_info={}
   fog_connection=Fog::RackSpace::LoadBalancers.new(auth_info)
   loadbalancer_id=get_loadbalancer_id(fog_connection, @new_resource.loadbalancer_name)
