@@ -1,5 +1,3 @@
-require 'fog'
-
 def get_loadbalancer_id(fog_connection,loadbalancer_name)
   return loadbalancer_id
 end
@@ -9,6 +7,7 @@ def get_node_id(fog_connection, node_name)
 end
 
 action :connect do
+  require 'fog'
   auth_info={}
   options={}
   fog_connection=Fog::RackSpace::LoadBalancers.new(auth_info)
