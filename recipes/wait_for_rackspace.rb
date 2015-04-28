@@ -24,7 +24,7 @@ log "wait_for_rackspace logs are found in /var/log/wait_for_rackspace.log"
   fi >> $log_file 2>&1
 
   # check if the server is set to be rackconnected
-  if expr "$(xenstore-read vm-data/provider_data/roles)" : "rack_connect"; then
+  if expr "$(xenstore-read vm-data/provider_data/roles)" : ".*rack_connect.*" 2>&1 >/dev/null; then
     # wait until the rackspace post install boot sequence has completed
     checkstatus(){ xenstore-read vm-data/user-metadata/rackconnect_automation_status;}
     STATUS=$(checkstatus)
@@ -38,7 +38,7 @@ log "wait_for_rackspace logs are found in /var/log/wait_for_rackspace.log"
   fi >> $log_file 2>&1
 
   # check if the server is managed operations
-  if expr "$(xenstore-read vm-data/provider_data/roles)" : "rax_managed"; then
+  if expr "$(xenstore-read vm-data/provider_data/roles)" : ".*rax_managed.*" 2>&1 >/dev/null; then
     # check for rax_service_level_automation
     checkstatus(){ xenstore-read vm-data/user-metadata/rax_service_level_automation;}
     STATUS=$(checkstatus)
