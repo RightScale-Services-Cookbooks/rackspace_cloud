@@ -29,7 +29,7 @@ log "wait_for_rackspace logs are found in /var/log/wait_for_rackspace.log"
     checkstatus(){ xenstore-read vm-data/user-metadata/rackconnect_automation_status;}
     STATUS=$(checkstatus)
     echo "*** current rackconnect status: $STATUS"
-    while  [ "$STATUS" != "DEPLOYED" ]; do
+    while  [ "$STATUS" != '"DEPLOYED"' ]; do
       echo '*** waiting for rackconnect post boot scripts to complete'
       echo "*** current status: $STATUS"
       sleep 10
@@ -43,7 +43,7 @@ log "wait_for_rackspace logs are found in /var/log/wait_for_rackspace.log"
     checkstatus(){ xenstore-read vm-data/user-metadata/rax_service_level_automation;}
     STATUS=$(checkstatus)
     echo "*** current managed status: $STATUS"
-    while [ "$STATUS" != "Complete" ]; do
+    while [ "$STATUS" != '"Complete"' ]; do
       echo '*** waiting for rackspace post install to complete'
       echo "*** current status: $STATUS"
       sleep 10
