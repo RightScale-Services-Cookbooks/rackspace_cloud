@@ -4,13 +4,13 @@ maintainer_email 'support@rightscale.com'
 license          'All rights reserved'
 description      'Rackspace cloud utilities'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.1.2'
+version          '0.1.3'
 
 depends "fog"
 depends "marker"
 
 recipe "rackspace_cloud::default", "sets up fog"
-recipe "rackspace_cloud::wait_for_rackconnect",
+recipe "rackspace_cloud::wait_for_rackspace",
   "Wait for the RackConnect automation to avoid a yum install conflict"
   
 attribute "rackspace_cloud/region",
@@ -21,5 +21,5 @@ attribute "rackspace_cloud/region",
   :required => "optional",
   :default => "ORD (Chicago)",
   :choice => ["ORD (Chicago)", "DFW (Dallas/Ft. Worth)", "IAD (Northern Virginia)", "LON (London)", "SYD (Sydney)", "HKG (Hong Kong)"],
-  :recipes => [ "rackspace_cloud::wait_for_rackconnect" ]
+  :recipes => [ "rackspace_cloud::wait_for_rackspace" ]
   
