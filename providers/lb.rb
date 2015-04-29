@@ -13,6 +13,7 @@ action :connect do
   fog_connection=Fog::RackSpace::LoadBalancers.new(auth_info)
   loadbalancer_id=get_loadbalancer_id(fog_connection, @new_resource.loadbalancer_name)
   fog_connection.create_node(loadbalancer_id, address, port, condition, options)
+  new_resource.updated_by_last_action(true)
 end
 
 action :disconnect do
@@ -22,4 +23,5 @@ action :disconnect do
   loadbalancer_id=get_loadbalancer_id(fog_connection, @new_resource.loadbalancer_name)
   node_id=get_node_id(fog_connection, node_name)
   fog_connection.delete_node(loadbalancer_id, node_id)
+  new_resource.updated_by_last_action(true)
 end
