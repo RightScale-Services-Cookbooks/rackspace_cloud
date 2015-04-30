@@ -7,8 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 
-rightscale_marker :begin
-
 log "wait_for_rackspace logs are found in /var/log/wait_for_rackspace.log"
 
 # Need to run this in the compile phase, hence the system call
@@ -51,5 +49,3 @@ log "wait_for_rackspace logs are found in /var/log/wait_for_rackspace.log"
     done
   fi >> $log_file 2>&1
 ]
-
-rightscale_marker :end
