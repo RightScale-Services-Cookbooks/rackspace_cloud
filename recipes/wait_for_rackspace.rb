@@ -43,13 +43,11 @@ log "wait_for_rackspace logs are found in /var/log/wait_for_rackspace.log"
     # check for rax_service_level_automation
     checkstatus(){ xenstore-read vm-data/user-metadata/rax_service_level_automation;}
     STATUS=$(checkstatus)
-    COUNTER=0
     echo "*** current managed status: $STATUS"
-    while [ "$STATUS" != '"Complete"' ] && [ $COUNTER -lt 6 ]; do
+    while [ "$STATUS" != '"Complete"' ] && [ "$STATUS" == '"Build Error"' ]; do
       echo '*** waiting for rackspace post install to complete'
       echo "*** current status: $STATUS"
       sleep 10
-      COUNTER=$[$COUNTER+1]
       STATUS=$(checkstatus)
     done
   fi >> $log_file 2>&1
