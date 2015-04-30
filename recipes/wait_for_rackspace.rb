@@ -11,6 +11,9 @@ log "wait_for_rackspace logs are found in /var/log/wait_for_rackspace.log"
 
 # Need to run this in the compile phase, hence the system call
 %x[
+  if [ -e /etc/rackspace/pre.chef.d/disable_rba.sh ]; then
+    mv /etc/rackspace/pre.chef.d/disable_rba.sh /tmp
+  fi
   log_file="/var/log/wait_for_rackspace.log"
   if [ -d "/etc/rackspace" ]; then
     touch /root/.noupdate
