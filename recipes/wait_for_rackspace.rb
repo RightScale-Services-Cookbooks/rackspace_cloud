@@ -36,6 +36,8 @@ log "wait_for_rackspace logs are found in /var/log/wait_for_rackspace.log"
       sleep 10
       STATUS=$(checkstatus)
     done
+    echo '*** waiting for rackconnect post boot scripts to complete'
+    echo "*** current status: $STATUS"
   fi >> $log_file 2>&1
 
   # check if the server is managed operations
@@ -50,5 +52,7 @@ log "wait_for_rackspace logs are found in /var/log/wait_for_rackspace.log"
       sleep 10
       STATUS=$(checkstatus)
     done
+    echo '*** waiting for rackspace post install to complete'
+    echo "*** current status: $STATUS
   fi >> $log_file 2>&1
 ]
