@@ -53,6 +53,6 @@ log "wait_for_rackspace logs are found in /var/log/wait_for_rackspace.log"
       STATUS=$(checkstatus)
     done
     echo '*** waiting for rackspace post install to complete'
-    echo "*** current status: $STATUS
+    echo "*** current status: $STATUS"
   fi >> $log_file 2>&1
 ]
